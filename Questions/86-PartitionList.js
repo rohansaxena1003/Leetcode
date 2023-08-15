@@ -43,25 +43,24 @@ function makeDivision(head, x) {
     while (tail != null) {
         if (tail.val < x) {
             if (tailA == null) {
-                tailA = new ListNode(tail.val, null);
+                tailA = tail;
                 headA = tailA;
             } else {
-                let temp = new ListNode(tail.val, null);
-                tailA.next = temp;
-                tailA = temp;
+                tailA.next = tail;
+                tailA = tail;
             }
         } else {
             if (tailB == null) {
-                tailB = new ListNode(tail.val, null);
+                tailB = tail;
                 headB = tailB;
             } else {
-                let temp = new ListNode(tail.val, null);
-                tailB.next = temp;
-                tailB = temp;
+                tailB.next = tail;
+                tailB = tail;
             }
         }
-
-        tail = tail.next;
+        let nextNode = tail.next;
+        tail.next = null;
+        tail = nextNode;
     }
 
     return {
